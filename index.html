@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pico W</title>
+        <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+        </script>
+    </head>
+    
+    
+    <body onload="brython()" cz-shortcut-listen="true">
+        <h1>Pico W</h1>
+        <input id="titletext">Temp </h2>
+        <textarea id="temp" rows="10" cols="10">Initial content</textarea>
+        <input id="axis_color" value="black">
+        <textarea id="console" rows="10" cols="10">Initial content</textarea>
+        <canvas id="plotarea" width="840" height="440"></canvas>
+        <p>Control the onboard LED</p>
+        <a href='/?led=on'><button>ON</button></a>&nbsp;
+        <a href='/?led=off'><button>OFF</button></a>
+        <table>
+    <tbody><tr>
+        <td rowspan="3"><textarea id="console" cols="30" rows="30"> </textarea></td>
+        <td><input id="axis_color" value="black"><button id="btn-axis">Change axis color</button></td>
+    </tr>
+    <tr>
+        <td><input id="titletext" value="This is the title"><button id="btn-title">Change title</button></td>
+    </tr>
+    <tr>
+        <td><canvas id="plotarea" width="840" height="440"></canvas></td>
+    </tr>
+</tbody></table>
+        <script type"text/python">
+from javascript import Date
+now = Date.now()
+print(now)
+document["main"].src = "graph_frontend.py?{}".format(now)
+        </script>
+        <script id="main" type="text/python" src="graph_frontend.py">
+        </script>
+    </body>
+</html>
